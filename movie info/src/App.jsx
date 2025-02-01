@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
+        console.log("Session User Id:", sessionStorage.getItem("User Id")); // Check if session is being set
         const response = await axios.get(
           "http://localhost:5006/api/user",
           {},

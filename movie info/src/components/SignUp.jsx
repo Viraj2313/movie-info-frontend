@@ -17,6 +17,7 @@ const SignUp = ({ setUserName }) => {
         { withCredentials: true }
       );
       if (response.status == 200) {
+        sessionStorage.setItem("User Id", response.data.userId);
         setUserName({ name: user.name });
 
         setUserState({
