@@ -28,7 +28,25 @@ function App() {
     };
     fetchUser();
   }, []);
+  //session checking
+  const checkSessionExpiration = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5006/api/check-session",
+        { withCredentials: true }
+      );
+      if (response.status === 200 && response.data.userId) {
+        console.log("Session Active: ", userId);
+      } else {
+        handleLogout;
+      }
+    } catch (error) {
+      console.error("Error checking session status:", error);
+      handleLogout();
+    }
+  };
 
+  setInterval(checkSessionExpiration, 1800000);
   const handleLogout = async (e) => {
     try {
       const response = await axios.post(
@@ -36,7 +54,7 @@ function App() {
         {},
         { withCredentials: true }
       );
-
+      sessionStorage.clear();
       console.log(response.data.message);
 
       setUserName(null);

@@ -28,6 +28,7 @@ const Home = ({ setSelectedMovie }) => {
         userId: userId,
         movieTitle: movie.Title,
         movieId: movie.imdbID,
+        moviePoster: movie.Poster,
       };
       console.log(moviesToSave);
       const response = await axios.post(

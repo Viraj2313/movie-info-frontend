@@ -6,7 +6,9 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     <nav>
       <div className="tabs">
-        <h2>Movies</h2>
+        <Link to={"/"}>
+          <h2>Movies</h2>
+        </Link>
         <Link to={"/wishlist"}>
           <h2>Watch List</h2>
         </Link>
@@ -15,7 +17,7 @@ const NavBar = ({ user, handleLogout }) => {
       <div className="nav-btns">
         {user ? (
           <>
-            <strong className="wlc">Welcome, {user.name}!</strong>
+            <strong className="wlc">Welcome, {user}!</strong>
             <button onClick={handleLogout}>Log out</button>
           </>
         ) : (
