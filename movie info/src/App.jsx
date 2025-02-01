@@ -15,14 +15,12 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        console.log("Session User Id:", sessionStorage.getItem("User Id")); // Check if session is being set
-        const response = await axios.get(
-          "http://localhost:5006/api/user",
-          {},
-          { withCredentials: true }
-        );
-        if (response.data.user) {
-          setUserName(response.data.user);
+        console.log("Session User Id:", sessionStorage.getItem("User Id"));
+        const response = await axios.get("http://localhost:5006/api/user", {
+          withCredentials: true,
+        });
+        if (response.data.userName) {
+          setUserName(response.data.userName);
         }
       } catch (error) {
         console.log("Error fetching user name");
