@@ -7,7 +7,9 @@ const NavBar = ({ user, handleLogout }) => {
     <nav>
       <div className="tabs">
         <h2>Movies</h2>
-        <h2>Watch List</h2>
+        <Link to={"/wishlist"}>
+          <h2>Watch List</h2>
+        </Link>
       </div>
 
       <div className="nav-btns">

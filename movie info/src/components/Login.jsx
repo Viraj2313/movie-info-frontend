@@ -9,14 +9,11 @@ const Login = ({ setUserName }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await axios.post("http://localhost:5006/api/login", user, {
-      withCredntials: true,
+      withCredentials: true,
     });
     if (response.status == 200) {
       setUserName(response.data.userName);
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ name: response.data.userName })
-      );
+
       sessionStorage.setItem("User Id", response.data.userId);
 
       console.log("login success");

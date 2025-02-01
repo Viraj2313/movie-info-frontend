@@ -13,12 +13,11 @@ const SignUp = ({ setUserName }) => {
     try {
       const response = await axios.post(
         "http://localhost:5006/api/register",
-        user
+        user,
+        { withCredentials: true }
       );
       if (response.status == 200) {
         setUserName({ name: user.name });
-        sessionStorage.setItem("User Id", response.data.userId);
-        localStorage.setItem("user", JSON.stringify({ name: user.name }));
 
         setUserState({
           name: "",

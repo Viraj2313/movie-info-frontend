@@ -30,7 +30,6 @@ const Home = ({ setSelectedMovie }) => {
         movieId: movie.imdbID,
       };
       console.log(moviesToSave);
-
       const response = await axios.post(
         "http://localhost:5006/api/add_wishlist",
         moviesToSave,
@@ -40,6 +39,7 @@ const Home = ({ setSelectedMovie }) => {
         alert("Movie added to Wishlist");
       }
     } catch (error) {
+      console.log(error);
       alert(`unable to add to wishlist`, error);
     }
   };
@@ -57,7 +57,7 @@ const Home = ({ setSelectedMovie }) => {
             <img src={movie.Poster} alt="" onClick={() => handleClick(movie)} />
             <h3>
               {movie.Title}{" "}
-              <button onClick={() => handleSave(movie)}>Save</button>-{" "}
+              <button onClick={() => handleSave(movie)}>Save</button>
             </h3>
           </li>
         ))}
